@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "comp/*": ["components/*"],
+      "mui": ["node_modules/@material-ui/core"],
+      "mui/*": ["node_modules/@material-ui/core/*"],
+      "layout":["components/layout"],
+      "lib/*":["lib/*"]
+    }
+  }
+}
+
