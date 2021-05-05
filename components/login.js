@@ -32,7 +32,7 @@ export default function Login(props){
   }
   function register(e){
     api.register({user_name:userName,password:password},(data)=>{
-      alert(data)
+      alert("注册成功")
     },(err)=>{
       alert(err)
     })
