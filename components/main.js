@@ -18,7 +18,7 @@ export default function Main(props){
       .then((res) => res.json())
       .catch((err) =>{setFiles(err)})
       .then((data) => {
-        if(data){
+        if(data.length == 0){
           setFiles("还没有任何文件")
         }else{
           setFiles(data)
