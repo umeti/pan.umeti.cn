@@ -1,4 +1,4 @@
-import React,{useState} from "react"
+import React,{useState,useEffect} from "react"
 import TextField from '@material-ui/core/TextField';
 import Button  from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,18 +15,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function Login(props){
+  useEffect(()=>{
+    gstat.set.appTitle("登录")
+  },[])
   const classes = useStyles();
   let [userName,setUserName] = useState("")
   let [password,setPassword] = useState("")
-
+  
   function login(e){
     e.preventDefault()
     api.login({user_name:userName,password:password},(data)=>{
         gstat.set.user(userName)
         gstat.set.userToken(data)
+        localStorage.user = userName
+        localStorage.userToken = data
     },(err)=>{
-        gstat.set.user("")
-        alert(err)
+      gstat.set.user("")
+      alert(err)
     })
 
   }
@@ -49,4 +54,9 @@ export default function Login(props){
 }
 
 
-
+export function logout(){
+  gstat.set.user(null)
+  gstat.set.userToken(null)
+  localStorage.user = ""
+  localStorage.userToken = ""
+}
